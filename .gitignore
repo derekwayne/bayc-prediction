@@ -1,0 +1,5 @@
+.env
+*cache
+*checkpoints
+*_data
+__pycache__
