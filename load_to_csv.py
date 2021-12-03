@@ -21,8 +21,6 @@ def get_max_sale(sales: dict) -> dict:
     for sale in sales.values():
         sale_price = sale['total_price'] / 10**sale['decimals']
         usd_value = sale_price * sale['usd_price']
-        if usd_value < 50:
-            print("sup")
         if usd_value > greatest_sale_price:
             greatest_sale = sale
             greatest_sale_price = usd_value
@@ -73,7 +71,7 @@ def create_pandas_df(n: int) -> pd.DataFrame:
     return df
 
 df = create_pandas_df(10000)
-df_filtered = df.loc[df['LastSalePrice'] != 'NaN']  # can only train models on data that has had a sale
-df_reindexed = df_filtered.reset_index(level=0)
+# df_filtered = df.loc[df['LastSalePrice'] != 'NaN']  # can only train models on data that has had a sale
+df = df.reset_index(level=0)
 
-df_reindexed.to_csv('bored_apes.csv', index=False)
+df.to_csv('bored_apes.csv', index=False)
